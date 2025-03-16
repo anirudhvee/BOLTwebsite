@@ -53,7 +53,6 @@ const modules = [
 ];
 
 const ArchitectureCard = ({ module }) => {
-  // Default to expanded
   const [expanded, setExpanded] = useState(true);
 
   const toggleExpand = () => setExpanded(!expanded);
@@ -63,15 +62,22 @@ const ArchitectureCard = ({ module }) => {
       className="glass-card p-6 cursor-pointer transform transition-all duration-300 hover:scale-105 hover:-translate-y-2 hover:shadow-xl"
       onClick={toggleExpand}
     >
-      <div className="text-blue-500 mb-4 flex justify-center">{module.icon}</div>
-      <h3 className="text-xl font-semibold mb-2 text-center">{module.title}</h3>
-      <p className="text-gray-400 text-center">{module.description}</p>
+      <div className="text-blue-500 mb-4 flex justify-center">
+        {module.icon}
+      </div>
+      {/* Lighter body text for improved readability */}
+      <h3 className="text-xl font-semibold mb-2 text-center text-white">
+        {module.title}
+      </h3>
+      <p className="text-gray-200 text-center">{module.description}</p>
       <div
         className={`overflow-hidden transition-all duration-300 ease-in-out mt-4 ${
           expanded ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <p className="text-gray-300">{module.detailedDescription}</p>
+        <p className="text-gray-200 text-base leading-relaxed">
+          {module.detailedDescription}
+        </p>
       </div>
     </div>
   );
@@ -94,15 +100,23 @@ const Architecture = () => {
         <h2 className="text-2xl font-semibold text-white mb-4 text-center">
           Pin Configuration Table
         </h2>
-        {/* Remove large scale/translate on hover so it doesn't overlap heading */}
+        {/* Slightly bigger font and lighter text color for better readability */}
         <div className="glass-card p-6 overflow-x-auto transition-all duration-300 hover:shadow-xl">
-          <table className="w-full border border-gray-600 bg-transparent rounded-lg overflow-hidden text-sm text-gray-200">
+          <table className="w-full border border-gray-600 bg-transparent rounded-lg overflow-hidden text-base text-gray-200">
             <thead className="bg-white/10">
               <tr>
-                <th className="p-3 border-b border-gray-700 text-left">Component</th>
-                <th className="p-3 border-b border-gray-700 text-left">Function</th>
-                <th className="p-3 border-b border-gray-700 text-left">Pin</th>
-                <th className="p-3 border-b border-gray-700 text-left">Direction</th>
+                <th className="p-3 border-b border-gray-700 text-left">
+                  Component
+                </th>
+                <th className="p-3 border-b border-gray-700 text-left">
+                  Function
+                </th>
+                <th className="p-3 border-b border-gray-700 text-left">
+                  Pin
+                </th>
+                <th className="p-3 border-b border-gray-700 text-left">
+                  Direction
+                </th>
               </tr>
             </thead>
             <tbody>
