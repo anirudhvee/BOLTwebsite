@@ -1,31 +1,34 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 
 const Hero = forwardRef<HTMLDivElement>((props, ref) => {
+  // State to track mouse position as percentages of the viewport
+  const [mousePos, setMousePos] = useState({ x: '50%', y: '50%' });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    // Convert mouse position in pixels to percentage of the window size
+    const xPercent = (e.clientX / window.innerWidth) * 100;
+    const yPercent = (e.clientY / window.innerHeight) * 100;
+    setMousePos({ x: `${xPercent}%`, y: `${yPercent}%` });
+  };
+
   return (
     <div
       ref={ref}
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      // Attach the onMouseMove to update our glow position
+      onMouseMove={handleMouseMove}
       style={{
-        // You can remove or adjust this background if you prefer a simpler style
-        background:
-          'radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.15), transparent 50%)',
+        // Dynamically place a blue radial glow at the mouse's position, more transparent alpha
+        background: `radial-gradient(circle at ${mousePos.x} ${mousePos.y}, rgba(59, 130, 246, 0.1), transparent 50%)`
       }}
     >
       <div className="absolute inset-0 bg-[#0A0A0A]" style={{ zIndex: -1 }} />
 
       <div className="text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-        <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6 relative inline-block">
-          {/* Apply textShadow inline so the glow remains permanently */}
-          <span
-            style={{
-              textShadow: '0 0 20px rgba(59, 130, 246, 0.8)',
-            }}
-            className="text-white"
-          >
-            BOLT
-          </span>
+        <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-blue-300">
+          BOLT
           <span className="block text-2xl sm:text-3xl lg:text-4xl mt-2 text-gray-400 font-light">
             Bike Overwatch & Location Tracker
           </span>
