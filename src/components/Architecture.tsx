@@ -1,7 +1,20 @@
 import React, { useState } from "react";
-import { Bell, Cpu, Map, Wifi, Bug, Eye } from "lucide-react";
+import { Bell, Cpu, Map, Wifi, Bug, Eye, Minus, Plus } from "lucide-react";
 
-const modules = [
+interface Module {
+  title: string;
+  icon: JSX.Element;
+  description: string;
+  detailedDescription: string;
+}
+
+interface ArchitectureCardProps {
+  module: Module;
+  expanded: boolean;
+  onToggle: () => void;
+}
+
+const modules: Module[] = [
   {
     title: "CC3200 LaunchPad",
     icon: <Cpu className="w-6 h-6 text-blue-500 mx-auto" />,
@@ -52,16 +65,11 @@ const modules = [
   },
 ];
 
-const ArchitectureCard = ({ module }) => {
-  // Default to expanded
-  const [expanded, setExpanded] = useState(true);
-
-  const toggleExpand = () => setExpanded(!expanded);
-
+const ArchitectureCard: React.FC<ArchitectureCardProps> = ({ module, expanded, onToggle }) => {
   return (
     <div
       className="glass-card p-6 cursor-pointer transform transition-all duration-300 hover:scale-105 hover:-translate-y-2 hover:shadow-xl"
-      onClick={toggleExpand}
+      onClick={onToggle}
     >
       <div className="text-blue-500 mb-4 flex justify-center">{module.icon}</div>
       <h3 className="text-xl font-semibold mb-2 text-center">{module.title}</h3>
@@ -78,14 +86,52 @@ const ArchitectureCard = ({ module }) => {
 };
 
 const Architecture = () => {
+  const [allExpanded, setAllExpanded] = useState(true);
+  const [expandedStates, setExpandedStates] = useState(Array(modules.length).fill(true));
+
+  const toggleAll = () => {
+    setAllExpanded(!allExpanded);
+    setExpandedStates(Array(modules.length).fill(!allExpanded));
+  };
+
+  const toggleCard = (index: number) => {
+    const newStates = [...expandedStates];
+    newStates[index] = !newStates[index];
+    setExpandedStates(newStates);
+    setAllExpanded(newStates.every(state => state));
+  };
+
   return (
     <section id="architecture" className="section-container">
-      <h2 className="section-title">System Architecture</h2>
+      <div className="flex flex-col md:flex-row md:relative md:items-center md:justify-center mb-8">
+        <h2 className="section-title mb-4 md:mb-0">System Architecture</h2>
+        <button
+          onClick={toggleAll}
+          className="md:absolute md:right-0 flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors duration-200"
+        >
+          {allExpanded ? (
+            <>
+              <Minus className="w-5 h-5" />
+              <span>Collapse All</span>
+            </>
+          ) : (
+            <>
+              <Plus className="w-5 h-5" />
+              <span>Expand All</span>
+            </>
+          )}
+        </button>
+      </div>
 
       {/* Architecture Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
         {modules.map((module, index) => (
-          <ArchitectureCard key={index} module={module} />
+          <ArchitectureCard
+            key={index}
+            module={module}
+            expanded={expandedStates[index]}
+            onToggle={() => toggleCard(index)}
+          />
         ))}
       </div>
 
@@ -95,7 +141,7 @@ const Architecture = () => {
           Pin Configuration Table
         </h2>
         {/* Remove large scale/translate on hover so it doesn't overlap heading */}
-        <div className="glass-card p-6 overflow-x-auto transition-all duration-300 hover:shadow-xl">
+        <div className="glass-card p-6 overflow-x-auto transform transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1 hover:shadow-xl">
           <table className="w-full border border-gray-600 bg-transparent rounded-lg overflow-hidden text-sm text-gray-200">
             <thead className="bg-white/10">
               <tr>

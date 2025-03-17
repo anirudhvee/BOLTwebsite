@@ -131,7 +131,14 @@ const Hero = forwardRef<HTMLDivElement>((props, ref) => {
       </div>
 
       <div className="absolute bottom-8 animate-bounce">
-        <ChevronDown className="w-6 h-6 text-gray-400" />
+        <button 
+          onClick={() => {
+            document.getElementById('overview')?.scrollIntoView({ behavior: 'smooth' });
+          }}
+          className="hover:text-blue-400 transition-colors duration-200"
+        >
+          <ChevronDown className="w-6 h-6 text-gray-400" />
+        </button>
       </div>
     </div>
   );

@@ -26,7 +26,7 @@ const Components = () => {
     },
     {
       icon: <Monitor className="w-6 h-6 text-purple-500 mx-auto" />,
-      name: "128x128 OLED Display",
+      name: "Adafruit 128x128 OLED Display",
       description: "Real-time status display",
       price: "$39.95",
       link: "https://www.adafruit.com/product/1431"

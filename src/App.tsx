@@ -18,6 +18,7 @@ import Architecture from './components/Architecture';
 import Components from './components/Components';
 import Team from './components/Team';
 import Demo from './components/Demo';
+import Footer from './components/Footer';
 
 function App() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -50,6 +51,7 @@ function App() {
         <Team />
         <Demo />
       </main>
+      <Footer />
     </div>
   );
 }
