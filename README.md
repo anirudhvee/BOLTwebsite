@@ -9,7 +9,15 @@ BOLT (Bike Overwatch & Location Tracker) is an embedded systems project that pro
 - Real-time tracking
 - Instant alerts
 
-This website was created to showcase the BOLT project, which was developed as part of EEC 172: Embedded Systems Final Project by Manasvini Narayanan and Anirudh Venkatachalam. For the actual embedded systems implementation and hardware details, please refer to the main project repository [link to main project repo].
+This website was created to showcase the BOLT project, which was developed as part of EEC 172: Embedded Systems Final Project by Manasvini Narayanan and Anirudh Venkatachalam. For the actual embedded systems implementation and hardware details, please refer to the main project [repository](https://github.com/mana-nara/BOLT-EEC172-FinalProject).
+
+## Contributors
+- **Anirudh Venkatachalam**  
+  - GitHub: [github.com/anirudhvee](https://github.com/anirudhvee)  
+  - LinkedIn: [linkedin.com/in/anirudhvee](https://linkedin.com/in/anirudhvee)  
+- **Manasvini Narayanan**  
+  - GitHub: [github.com/mana-nara](https://github.com/mana-nara)  
+  - LinkedIn: [linkedin.com/in/mana-nara](https://www.linkedin.com/in/mana-nara/)  
 
 ## Prerequisites
 
@@ -65,3 +73,4 @@ npm run preview
 - `npm run build` - Create production build
 - `npm run preview` - Preview production build
 - `npm run lint` - Run ESLint for code linting
+

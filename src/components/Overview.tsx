@@ -27,7 +27,7 @@ const Overview = () => {
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <a
-            href="https://github.com/YourUserName/YourRepository"
+            href="https://github.com/mana-nara/BOLT-EEC172-FinalProject"
             target="_blank"
             rel="noopener noreferrer"
             className="px-8 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg font-medium transition-colors duration-200"
