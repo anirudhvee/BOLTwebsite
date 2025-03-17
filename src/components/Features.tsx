@@ -11,7 +11,7 @@ const Features = () => {
     {
       icon: <Shield className="w-6 h-6" />,
       title: "Movement Detection",
-      description: "Advanced accelerometer technology detects unauthorized movement instantly"
+      description: "Built-in accelerometer detects unauthorized movement instantly"
     },
     {
       icon: <Bell className="w-6 h-6" />,
