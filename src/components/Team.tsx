@@ -1,21 +1,23 @@
 import React from 'react';
 import { Users, Linkedin, Github } from 'lucide-react';
+import manasviniImage from '../assets/images/manasvini.JPG';
+import anirudhImage from '../assets/images/anirudh.jpg';
 
 const Team = () => {
   const team = [
     {
       name: "Manasvini Narayanan",
       role: "Fourth Year Computer Science and Engineering Student at UC Davis",
-      image: "/images/manasvini.JPG",
+      image: manasviniImage,
       linkedin: "https://www.linkedin.com/in/mana-nara/",
-      github: "https://github.com/mana-nara" // Example GitHub URL
+      github: "https://github.com/mana-nara"
     },
     {
       name: "Anirudh Venkatachalam",
       role: "Fourth Year Computer Science and Engineering Student at UC Davis",
-      image: "/images/anirudh.jpg",
+      image: anirudhImage,
       linkedin: "https://www.linkedin.com/in/anirudhvee/",
-      github: "https://github.com/anirudhvee" // Example GitHub URL
+      github: "https://github.com/anirudhvee"
     }
   ];
 
