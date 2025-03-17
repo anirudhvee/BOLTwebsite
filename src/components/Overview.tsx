@@ -40,7 +40,7 @@ const Overview = () => {
             rel="noopener noreferrer"
             className="px-8 py-3 bg-gray-700 hover:bg-gray-600 rounded-lg font-medium transition-colors duration-200"
           >
-            Download Lab Report
+            Lab Report
           </a>
         </div>
       </section>

@@ -65,8 +65,3 @@ npm run preview
 - `npm run build` - Create production build
 - `npm run preview` - Preview production build
 - `npm run lint` - Run ESLint for code linting
-
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details. 
